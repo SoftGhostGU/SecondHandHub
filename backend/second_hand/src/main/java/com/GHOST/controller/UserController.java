@@ -3,12 +3,17 @@ package com.GHOST.controller;
 import com.GHOST.pojo.Result;
 import com.GHOST.pojo.User;
 import com.GHOST.service.UserService;
+import com.GHOST.utils.JwtUtil;
+import com.GHOST.utils.MD5Utils;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -28,6 +33,23 @@ public class UserController {
             return Result.success();
         } else {
             return Result.error("用户名已存在");
+        }
+    }
+
+    @PostMapping("/login")
+    public Result<String> login(@Pattern(regexp = "^\\S{5,20}$") String username, @Pattern(regexp = "^\\S{5,32}$") String password) {
+        // 登录用户
+        User u = userService.findByUsername(username);
+        if (u == null) {
+            return Result.error("用户不存在");
+        } else if (MD5Utils.passwordIsTrue(password, u.getPassword())) {
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", u.getId());
+            claims.put("username", u.getUsername());
+            String token = JwtUtil.genToken(claims);
+            return Result.success(token);
+        } else {
+            return Result.error("密码错误");
         }
     }
 }
