@@ -1,20 +1,35 @@
 package com.GHOST.pojo;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
-public class category {
+import java.time.LocalDateTime;
+
+public class Category {
+    @NotNull(groups = Update.class)
     private int id;                // ID
+
+    @NotEmpty(groups = {Add.class, Update.class})
     private String categoryName;   // 分类名称
+
+    @NotEmpty(groups = {Add.class, Update.class})
     private String categoryDetail; // 细分分类
     private int createUser;        // 创建人ID
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;       // 创建时间
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;       // 修改时间
 
-    public category() {
+    public interface Add {}
+    public interface Update {}
+
+    public Category() {
     }
 
-    public category(int id, String categoryName, String categoryDetail, int createUser, LocalDateTime createTime, LocalDateTime updateTime) {
+    public Category(int id, String categoryName, String categoryDetail, int createUser, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.categoryName = categoryName;
         this.categoryDetail = categoryDetail;
