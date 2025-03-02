@@ -4,3 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/second_hand?useSSL=false
     username: root
     password: GUyiwei_)*@@
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名和下划线的自动转换
