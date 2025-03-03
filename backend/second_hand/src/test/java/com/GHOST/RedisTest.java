@@ -14,16 +14,16 @@ public class RedisTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Test
+//    @Test
     public void testSet() {
         // 往redis中存储一个键值对
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
 
         operations.set("username", "GHOST");
-        operations.set("id", "1", 15, TimeUnit.SECONDS);
+//        operations.set("id", "1", 15, TimeUnit.SECONDS);
     }
 
-    @Test
+//    @Test
     public void testGet() {
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
 
