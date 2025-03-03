@@ -1,8 +1,7 @@
 package com.GHOST.mapper;
 
 import com.GHOST.pojo.Goods;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,4 +12,13 @@ public interface GoodsMapper {
     void add(Goods goods);
 
     List<Goods> list(Integer userId, String categoryId, String state);
+
+    @Select("select * from goods where id = #{id}")
+    Goods findById(Integer id);
+
+    @Update("update goods set title = #{title}, content = #{content}, cover_img = #{coverImg}, price = #{price}, state = #{state}, category_id = #{categoryId}, update_time = #{updateTime} where id = #{id}")
+    void update(Goods goods);
+
+    @Delete("delete from goods where id = #{id}")
+    void delete(Integer id);
 }

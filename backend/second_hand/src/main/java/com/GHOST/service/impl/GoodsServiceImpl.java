@@ -49,4 +49,21 @@ public class GoodsServiceImpl implements GoodsService {
         pageBean.setItems(p.getResult());
         return pageBean;
     }
+
+    @Override
+    public Goods findById(Integer id) {
+        Goods g = goodsMapper.findById(id);
+        return g;
+    }
+
+    @Override
+    public void update(Goods goods) {
+        goods.setUpdateTime(LocalDateTime.now());
+        goodsMapper.update(goods);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        goodsMapper.delete(id);
+    }
 }
