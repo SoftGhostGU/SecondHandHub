@@ -32,16 +32,24 @@ public class GoodsController {
 
     @GetMapping("/get")
     public Result<Goods> get(Integer id) {
-        return Result.success();
+        Goods goods = goodsService.findById(id);
+        return Result.success(goods);
     }
 
     @PostMapping("/update")
     public Result update(@RequestBody @Validated(Category.Update.class) Goods goods) {
+        goodsService.update(goods);
         return Result.success();
     }
 
     @DeleteMapping("/delete")
     public Result delete(Integer id) {
-        return Result.success();
+        Goods g = goodsService.findById(id);
+        if (g == null) {
+            return Result.error("商品不存在");
+        } else {
+            goodsService.delete(id);
+            return Result.success();
+        }
     }
 }
