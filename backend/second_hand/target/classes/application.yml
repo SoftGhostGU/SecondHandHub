@@ -4,7 +4,15 @@ spring:
     url: jdbc:mysql://localhost:3306/second_hand?useSSL=false
     username: root
     password: GUyiwei_)*@@
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true # 开启驼峰命名和下划线的自动转换
+
+SavePath:
+  ProfilePhoto: D:/Project/SecondHandHub/profile_photo/upload_photo/ # 图标的物理存储路径，确保以斜杠结尾
+  ProfilePhotoMapper: /profile-photo/     # 图标映射路径，确保以斜杠结尾
