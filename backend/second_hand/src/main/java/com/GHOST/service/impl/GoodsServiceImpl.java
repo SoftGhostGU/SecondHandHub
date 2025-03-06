@@ -66,4 +66,11 @@ public class GoodsServiceImpl implements GoodsService {
     public void delete(Integer id) {
         goodsMapper.delete(id);
     }
+
+    @Override
+    public void buy(Goods goods) {
+        goods.setState("已被购买");
+        goods.setUpdateTime(LocalDateTime.now());
+        goodsMapper.buy(goods);
+    }
 }

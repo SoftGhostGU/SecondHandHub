@@ -52,4 +52,10 @@ public class GoodsController {
             return Result.success();
         }
     }
+
+    @PostMapping("/buy")
+    public Result buy(@RequestBody @Validated(Category.Update.class) Goods goods) {
+        goodsService.buy(goods);
+        return Result.success();
+    }
 }

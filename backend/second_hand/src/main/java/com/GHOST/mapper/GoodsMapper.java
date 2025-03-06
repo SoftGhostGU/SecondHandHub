@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface GoodsMapper {
-    @Insert("insert into goods(title, content, cover_img, price, state, category_id, create_user, create_time, update_time)" +
-            " values(#{title}, #{content}, #{coverImg}, #{price}, #{state}, #{categoryId}, #{createUser}, #{createTime}, #{updateTime})")
+    @Insert("insert into goods(title, content, cover_img, price, state, category_id, create_user, buyer_user, create_time, update_time)" +
+            " values(#{title}, #{content}, #{coverImg}, #{price}, #{state}, #{categoryId}, #{createUser}, null, #{createTime}, #{updateTime})")
     void add(Goods goods);
 
     List<Goods> list(Integer userId, String categoryId, String state);
@@ -21,4 +21,7 @@ public interface GoodsMapper {
 
     @Delete("delete from goods where id = #{id}")
     void delete(Integer id);
+
+    @Update("update goods set state = '已被购买', buyer_user = #{buyerUser} where id = #{id}")
+    void buy(Goods goods);
 }

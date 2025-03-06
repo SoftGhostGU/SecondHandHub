@@ -33,12 +33,43 @@ public class Goods {
     @NotNull(groups = {Add.class, Update.class})
     private Integer categoryId;         // 物品分类ID
     private Integer createUser;         // 创建人ID
+    private Integer BuyerUser;          // 购买人ID
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;   // 创建时间
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;   // 修改时间
+
+    public Goods(Integer id, String title, String content, String coverImg, Integer price, String state, Integer categoryId, Integer createUser, Integer BuyerUser, LocalDateTime createTime, LocalDateTime updateTime) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.coverImg = coverImg;
+        this.price = price;
+        this.state = state;
+        this.categoryId = categoryId;
+        this.createUser = createUser;
+        this.BuyerUser = BuyerUser;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取
+     * @return BuyerUser
+     */
+    public Integer getBuyerUser() {
+        return BuyerUser;
+    }
+
+    /**
+     * 设置
+     * @param BuyerUser
+     */
+    public void setBuyerUser(Integer BuyerUser) {
+        this.BuyerUser = BuyerUser;
+    }
 
     public interface Add {}
     public interface Update {}
