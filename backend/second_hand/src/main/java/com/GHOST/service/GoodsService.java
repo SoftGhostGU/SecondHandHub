@@ -13,4 +13,6 @@ public interface GoodsService {
     void update(Goods goods);
 
     void delete(Integer id);
+
+    void buy(Goods goods);
 }
