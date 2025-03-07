@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import LoginAndRegister from '@/components/LoginAndRegister.vue'
+<script setup>
+import LoginAndRegister from '../components/LoginAndRegister.vue'
 </script>
 
 <template>
