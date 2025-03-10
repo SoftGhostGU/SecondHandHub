@@ -4,6 +4,7 @@ D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\config\WebC
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\controller\CategoryController.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\controller\FileUploadController.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\controller\GoodsController.java
+D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\controller\MailController.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\controller\UserController.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\exception\GlobalExceptionHandler.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\interceptors\LoginInterceptor.java
@@ -20,7 +21,9 @@ D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\Cat
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\GoodsService.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\impl\CategoryServiceImpl.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\impl\GoodsServiceImpl.java
+D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\impl\MailServiceImpl.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\impl\UserServiceImpl.java
+D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\MailService.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\service\UserService.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\utils\JwtUtil.java
 D:\Project\SecondHandHub\backend\second_hand\src\main\java\com\GHOST\utils\MD5Utils.java
