@@ -1,5 +1,6 @@
 //导入request.js请求工具
 import request from '@/utils/request.js'
+import { pa } from 'element-plus/es/locale/index.mjs';
 
 //提供调用注册接口的函数
 export const userRegisterService = (registerData) => {
@@ -41,4 +42,13 @@ export const userAvatarUpdateService = (avatarUrl) => {
 // 修改密码
 export const userPwdUpdateService = (PwdData) => {
     return request.patch('/user/updatePwd', PwdData)
+}
+
+// 根据id获取用户信息
+export const getUserInfoByIdService = (userId) => {
+    return request.get('/user/getUserByID', {
+        params: {
+            id: userId
+        }
+    });
 }
