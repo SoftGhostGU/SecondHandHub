@@ -15,4 +15,6 @@ public interface GoodsService {
     void delete(Integer id);
 
     void buy(Goods goods);
+
+    PageBean<Goods> listAll(Integer pageNum, Integer pageSize, String categoryId, String state);
 }

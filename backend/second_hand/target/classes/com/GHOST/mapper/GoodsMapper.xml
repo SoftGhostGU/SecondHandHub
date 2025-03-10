@@ -16,4 +16,16 @@
             and create_user = #{userId}
         </where>
     </select>
+
+    <select id="listAll" resultType="com.GHOST.pojo.Goods">
+        SELECT * FROM goods
+        <where>
+            <if test="categoryId!= null">
+                AND category_id = #{categoryId}
+            </if>
+            <if test="state!= null">
+                AND state = #{state}
+            </if>
+        </where>
+    </select>
 </mapper>

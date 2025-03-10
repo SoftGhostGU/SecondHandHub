@@ -51,6 +51,23 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public PageBean<Goods> listAll(Integer pageNum, Integer pageSize, String categoryId, String state) {
+        PageBean<Goods> pageBean = new PageBean<>();
+        // 利用PageHelper插件实现分页
+        PageHelper.startPage(pageNum, pageSize);
+        // 调用GoodsMapper的listAll方法查询所有商品列表
+        Map<String, Object> map = ThreadLocalUtil.get();
+        List<Goods> goodsList = goodsMapper.listAll(categoryId, state);
+
+        // Page中提供了方法，可以获取PageHelper分页查询后得到的总记录条数和当前页数据
+        Page<Goods> p = (Page<Goods>) goodsList;
+        // 把数据填充的PageBean对象中
+        pageBean.setTotal(p.getTotal());
+        pageBean.setItems(p.getResult());
+        return pageBean;
+    }
+
+    @Override
     public Goods findById(Integer id) {
         Goods g = goodsMapper.findById(id);
         return g;
