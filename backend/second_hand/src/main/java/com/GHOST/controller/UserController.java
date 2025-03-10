@@ -30,12 +30,12 @@ public class UserController {
     private StringRedisTemplate stringRedisTemplate;
 
     @PostMapping("/register")
-    public Result register(@Pattern(regexp = "^\\S{5,20}$") String username, @Pattern(regexp = "^\\S{5,32}$") String password){
+    public Result register(@Pattern(regexp = "^\\S{5,20}$") String username, @Pattern(regexp = "^\\S{5,32}$") String password, String email){
         // 查询用户
         User u = userService.findByUsername(username);
         if (u == null) {
             // 注册用户
-            userService.register(username, password);
+            userService.register(username, password, email);
             return Result.success();
         } else {
             return Result.error("用户名已存在");
@@ -119,5 +119,18 @@ public class UserController {
         operations.getOperations().delete(token);
 
         return Result.success();
+    }
+
+    @GetMapping("/getUserByID")
+    public Result getUserByID(@RequestParam("id") Integer id) {
+        // 调用服务层方法根据ID获取用户信息
+        User user = userService.findById(id);
+
+        // 检查用户是否存在
+        if (user == null) {
+            return Result.error("用户不存在");
+        }
+
+        return Result.success(user);
     }
 }
