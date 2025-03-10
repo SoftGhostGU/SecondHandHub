@@ -30,6 +30,14 @@ public class GoodsController {
         return Result.success(pageBean);
     }
 
+    @GetMapping("/listAll")
+    public Result<PageBean<Goods>> listAll(Integer pageNum, Integer pageSize,
+                                           @RequestParam(required = false) String categoryId,
+                                           @RequestParam(required = false) String state) {
+        PageBean<Goods> pageBean = goodsService.listAll(pageNum, pageSize, categoryId, state);
+        return Result.success(pageBean);
+    }
+
     @GetMapping("/get")
     public Result<Goods> get(Integer id) {
         Goods goods = goodsService.findById(id);

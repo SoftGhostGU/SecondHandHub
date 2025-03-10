@@ -13,6 +13,8 @@ public interface GoodsMapper {
 
     List<Goods> list(Integer userId, String categoryId, String state);
 
+    List<Goods> listAll(String categoryId, String state);
+
     @Select("select * from goods where id = #{id}")
     Goods findById(Integer id);
 
