@@ -16,6 +16,18 @@ spring:
       enabled: true
       max-file-size: 10MB
       max-request-size: 100MB
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 3089308393@qq.com
+    password: zgzfzzzeethodfgb
+    default-encoding: utf-8
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.debug: true
+
 
 mybatis:
   configuration:

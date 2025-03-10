@@ -11,8 +11,10 @@ public interface CategoryMapper {
             "values(#{categoryName}, #{categoryDetail}, #{createUser}, #{createTime}, #{updateTime})")
     void add(Category category);
 
-    @Select("select * from category where create_user = #{userId}")
-    List<Category> list(Integer userId);
+//    @Select("select * from category where create_user = #{userId}")
+//    List<Category> list(Integer userId);
+    @Select("select * from category")
+    List<Category> list();
 
     @Select("select * from category where id = #{id}")
     Category findById(Integer id);
