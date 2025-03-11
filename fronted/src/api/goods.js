@@ -36,5 +36,19 @@ export const goodsAllListService = (params)=>{
 //文章添加
 export const goodsAddService = (articleData)=>{
     return request.post('/goods/add',articleData);
+}
 
+//文章修改
+export const goodsUpdateService = (articleData)=>{
+    return request.post('/goods/update',articleData);
+}
+
+//查询物品
+export const goodsDetailService = (id)=> {
+    return request.get('/goods/get?id='+id)
+}
+
+//购买物品
+export const goodsBuyService = (params)=>{
+    return request.post('/goods/buy',params)
 }

@@ -64,10 +64,12 @@
         <img :src="image" alt="image" class="modal-image" />
         <p class="text-confirm">用户名：{{ myname }}</p>
         <p class="text-confirm">邮箱：{{ myemail }}</p>
-        <p class="text-confirm-gray">请确认信息无误以后，点击“联系卖家”按钮，我们将会帮您发送邮件，请耐心等待。</p>
+        <p class="text-confirm-gray">
+          请确认信息无误以后，点击“联系卖家”按钮，我们将会帮您发送邮件，请耐心等待。
+        </p>
         <button @click="closeAll">关闭</button>
         <button @click="closeContactSellerModal">回到上一页</button>
-        <button @click="contactSeller(myname, title, myemail)">联系卖家</button>
+        <button @click="contactSeller(myname, title, myemail, id, myID)">联系卖家</button>
       </div>
     </div>
   </div>
@@ -78,6 +80,10 @@ import { ref, defineProps } from "vue";
 
 // 定义属性
 const props = defineProps({
+  id: {
+    type: Number,
+    required: true,
+  },
   image: {
     type: String,
     required: true,
@@ -99,11 +105,10 @@ const props = defineProps({
     required: true,
   },
   createUser: {
-    type: String, // 如果创建者是字符串类型，保持为 String
+    type: Number, // 如果创建者是字符串类型，保持为 String
     required: false,
   },
 });
-
 // 控制弹窗显示
 const isModalVisible = ref(false);
 const isBuyNowModalVisible = ref(false);
@@ -134,56 +139,120 @@ const closeContactSellerModal = () => {
   isContactSellerModalVisible.value = false; // 打开弹窗
 };
 
+import { userInfoService } from "@/api/user.js";
+const myID = ref(0);
+const myname = ref("");
+const myemail = ref("");
+const getMyInfo = async () => {
+  const result = await userInfoService();
+  // console.log(result);
+  myID.value = result.data.id;
+  myname.value = result.data.username;
+  myemail.value = result.data.email;
+  return result;
+};
+getMyInfo();
+
 import { getUserInfoByIdService } from "@/api/user.js";
 
 const username = ref("");
 const email = ref("");
 const getUserInfo = async (userID) => {
   const result = await getUserInfoByIdService(userID);
-  console.log(result);
+  // console.log(result);
   username.value = result.data.username;
   email.value = result.data.email;
   return result;
 };
 getUserInfo(1);
 
+// 购买物品,联系卖家
 import { sendMail } from "../api/mailSender";
-
+import {
+  goodsUpdateService,
+  goodsDetailService,
+  goodsBuyService,
+} from "@/api/goods.js";
 const files = [];
 files.forEach((file) => {
   mailData.append("file", file);
 });
-const contactSeller = async (myname, title, myemail) => {
+
+const goodsDetailData = ref({});
+const goodsDetail = async (id) => {
+  goodsDetailData.value = await goodsDetailService(id);
+  // console.log(goodsDetailData.value.data);
+  return goodsDetailData.value.data;
+};
+const goodsUpdate = async (params) => {
+  const result = await goodsUpdateService(params);
+  // console.log(result);
+  return result;
+};
+const goodsBuy = async (id, buyerUser) => {
+  const result = await goodsBuyService({ id: id, buyerUser: buyerUser });
+  console.log(result);
+  return result;
+};
+// goodsUpdate({
+//   id: 3,
+//   title: "短袖T恤",
+//   content: "<p>短袖 | 面料舒适</p>",
+//   coverImg:
+//     "http://localhost:8080/profile-photo/6d6d94a9-0fd1-40fb-9818-da1e0e495497.jpg",
+//   price: 39,
+//   state: "已被购买",
+//   categoryId: 1,
+// });
+
+// goodsBuy(4, 1);
+
+// goodsDetail(2).then((data) => {
+//   // data.state = "未被购买"; // 修改状态,需要改成goodsBuyService
+//   goodsBuy(2, myID);
+//   // console.log(data); // 打印返回的 data
+//   goodsUpdate(data);
+// });
+
+// const goodsUpdate = async
+const contactSeller = async (myname, title, myemail, id, myID) => {
+  console.log(myname, title, myemail, id, myID);
   const mailData = {
     to: email.value,
     subject: "二手商品信息 - 有顾客想要购买你出售的商品",
-    content: "你好！~ 我是" + myname + "，我想购买你出售的图片中的" + title + "。我的联系方式是" + myemail + "，我们商量一下怎么交接吧~",
+    content:
+      "你好！~ 我是" +
+      myname +
+      "，我想购买你出售的图片中的" +
+      title +
+      "。我的联系方式是" +
+      myemail +
+      "，我们商量一下怎么交接吧~",
   };
-  
+
   sendMail(mailData, files)
     .then((response) => {
       console.log("邮件发送成功", response.data);
     })
     .catch((error) => {
       console.error("邮件发送失败", error);
+    })
+    .finally(() => {
+      // console.log(state);
+      goodsDetail(id).then((data) => {
+        // data.state = "未被购买"; // 修改状态,需要改成goodsBuyService
+        goodsBuy(id, myID);
+        // console.log(data); // 打印返回的 data
+        goodsUpdate(data);
+      });
     });
-  
+
   setTimeout(() => {
     closeAll();
   }, 3000);
 };
 
-import { userInfoService } from "@/api/user.js";
-const myname = ref("");
-const myemail = ref("");
-const getMyInfo = async () => {
-  const result = await userInfoService();
-  console.log(result);
-  myname.value = result.data.username;
-  myemail.value = result.data.email;
-  return result;
-};
-getMyInfo();
+
 </script>
   
 <style scoped>

@@ -8,7 +8,7 @@ import {
   goodsCategoryAddService,
   goodsCategoryUpdateService,
   goodsCategoryDeleteService,
-  goodsAllListService
+  goodsAllListService,
 } from "@/api/goods.js";
 const goodsCategoryList = async () => {
   let result = await goodsCategoryListService();
@@ -128,6 +128,13 @@ const onCurrentChange = (num) => {
   goodsList();
 };
 
+// 获取当前用户的id
+import { userInfoService } from "@/api/user.js";
+const getUserId = async () => {
+  let result = await userInfoService();
+  return result.data.id;
+};
+console.log(getUserId());
 
 //获取商品列表数据
 const goodsList = async () => {
@@ -140,9 +147,12 @@ const goodsList = async () => {
   };
   let result = await goodsAllListService(params);
 
+  let id = await getUserId();
+
   //渲染视图
   total.value = result.data.total;
-  goods.value = result.data.items;
+  // 筛选出不是自己的商品
+  goods.value = result.data.items.filter((item) => item.createUser != id);
 
   //处理数据,给数据模型扩展一个属性categoryName,分类名称
   for (let i = 0; i < goods.value.length; i++) {
@@ -157,7 +167,6 @@ const goodsList = async () => {
 
 goodsCategoryList();
 goodsList();
-
 </script>
 <template>
   <div class="category-container">
@@ -246,13 +255,45 @@ goodsList();
       </el-dialog>
     </el-card>
     <el-card class="goods-container">
-      
+      <!-- 搜索表单 -->
+      <el-form inline>
+        <el-form-item label="商品分类：">
+          <el-select placeholder="请选择" v-model="categoryId">
+            <el-option
+              v-for="c in categorys"
+              :key="c.id"
+              :label="c.categoryName + ' / ' + c.categoryDetail"
+              :value="c.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <!-- <el-form-item label="发布状态：">
+                <el-select placeholder="请选择" v-model="state">
+                    <el-option label="已发布" value="已发布"></el-option>
+                    <el-option label="草稿" value="草稿"></el-option>
+                </el-select>
+            </el-form-item> -->
+        <el-form-item>
+          <el-button type="primary" @click="goodsList">搜索</el-button>
+          <el-button
+            @click="
+              categoryId = '';
+              state = '';
+            "
+            >重置</el-button
+          >
+        </el-form-item>
+      </el-form>
+
       <!-- 商品卡片列表 -->
       <div class="goods-list">
         <AllGoodsCard
           class="goods-card"
           v-for="item in goods"
           :key="item.id"
+          :id="item.id"
           :title="item.title"
           :content="item.content"
           :image="item.coverImg"
