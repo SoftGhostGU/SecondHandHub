@@ -28,7 +28,7 @@ public class Goods {
     private Integer price;              // 物品价格
 
     @State(groups = {Add.class, Update.class})
-    private String state = "未被购买";    // 文章状态: 只能是[已被购买]或者[未被购买]
+    private String state = "未被购买";    // 物品状态: 只能是[已被购买]或者[未被购买]
 
     @NotNull(groups = {Add.class, Update.class})
     private Integer categoryId;         // 物品分类ID
