@@ -40,7 +40,7 @@ const addCategory = async () => {
   let result = await goodsCategoryAddService(categoryModel.value);
   ElMessage.success(result.msg ? result.msg : "添加成功");
 
-  //调用获取所有文章分类的函数
+  //调用获取所有物品分类的函数
   goodsCategoryList();
   dialogVisible.value = false;
 };
