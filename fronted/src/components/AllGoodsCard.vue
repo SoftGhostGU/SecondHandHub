@@ -69,7 +69,9 @@
         </p>
         <button @click="closeAll">关闭</button>
         <button @click="closeContactSellerModal">回到上一页</button>
-        <button @click="contactSeller(myname, title, myemail, id, myID)">联系卖家</button>
+        <button @click="contactSeller(myname, title, myemail, image, id, myID)">
+          联系卖家
+        </button>
       </div>
     </div>
   </div>
@@ -215,8 +217,9 @@ const goodsBuy = async (id, buyerUser) => {
 // });
 
 // const goodsUpdate = async
-const contactSeller = async (myname, title, myemail, id, myID) => {
+const contactSeller = async (myname, title, myemail, file, id, myID) => {
   console.log(myname, title, myemail, id, myID);
+  const files = [];
   const mailData = {
     to: email.value,
     subject: "二手商品信息 - 有顾客想要购买你出售的商品",
@@ -227,10 +230,14 @@ const contactSeller = async (myname, title, myemail, id, myID) => {
       title +
       "。我的联系方式是" +
       myemail +
-      "，我们商量一下怎么交接吧~",
+      "，我们商量一下怎么交接吧~" +
+      "<br><img :src='" +
+      file +
+      "' alt='image' style='width: 300px; height: auto;' />",
   };
 
-  sendMail(mailData, files)
+  // sendMail(mailData, files)
+  sendMail(mailData)
     .then((response) => {
       console.log("邮件发送成功", response.data);
     })
@@ -251,8 +258,6 @@ const contactSeller = async (myname, title, myemail, id, myID) => {
     closeAll();
   }, 3000);
 };
-
-
 </script>
   
 <style scoped>
