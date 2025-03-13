@@ -95,7 +95,7 @@ const tokenStore = useTokenStore();
 
 //上传成功的回调函数
 const uploadSuccess = (result) => {
-  console.log(result);
+  // console.log(result);
   goodsModel.value.coverImg = "http://localhost:8080" + result;
 };
 
