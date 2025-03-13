@@ -1,4 +1,5 @@
 import request from '@/utils/request.js'
+import axios from 'axios'
 import { useTokenStore } from '@/stores/token.js'
 
 // 发送邮件
@@ -9,9 +10,11 @@ export const sendMail = async (mailData, files) => {
     formData.append('content', mailData.content);
 
     // 添加文件
-    files.forEach((file) => {
-        formData.append('file', file);
-    });
+    if (files && files.length > 0) {
+        files.forEach((file) => {
+            formData.append('file', file);
+        });
+    }
 
-    return request.post('/mail/send', formData);
+    return request.post('/mail/send', formData, files);
 };
