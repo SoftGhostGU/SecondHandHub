@@ -76,52 +76,56 @@ INSERT INTO goods (title, content, cover_img, price, state, category_id, create_
 VALUES
 -- 服装 -> 衣服
 ('T恤', '夏季舒适的棉质T恤', 'https://s21.ax1x.com/2025/03/02/pEGYVYV.jpg', 150, '未被购买', 1, 1, NULL, '2025-03-09 23:34:00', '2025-03-09 23:34:00'),
-('羽绒服', '保暖羽绒服', 'down_jacket.jpg', 500, '未被购买', 1, 1, NULL, '2025-03-09 23:35:00', '2025-03-09 23:35:00'),
-('牛仔裤', '经典牛仔裤，适合各种场合', 'jeans.jpg', 200, '未被购买', 2, 1, NULL, '2025-03-09 23:36:00',
+('羽绒服', '保暖羽绒服', 'https://s.coze.cn/t/DKcTbK0zS-0/', 500, '未被购买', 1, 1, NULL, '2025-03-09 23:35:00', '2025-03-09 23:35:00'),
+('牛仔裤', '经典牛仔裤，适合各种场合', 'https://s.coze.cn/t/OXxGYEA9DCk/', 200, '未被购买', 2, 1, NULL, '2025-03-09 23:36:00',
  '2025-03-09 23:36:00'),
-('连衣裙', '适合春夏的连衣裙', 'dress.jpg', 350, '未被购买', 1, 1, NULL, '2025-03-09 23:37:00', '2025-03-09 23:37:00'),
-('运动裤', '适合运动的宽松裤子', 'sports_pants.jpg', 180, '未被购买', 2, 1, NULL, '2025-03-09 23:38:00',
+('连衣裙', '适合春夏的连衣裙', 'https://s.coze.cn/t/j1n9rfJJA_0/', 350, '未被购买', 1, 1, NULL, '2025-03-09 23:37:00', '2025-03-09 23:37:00'),
+('运动裤', '适合运动的宽松裤子', 'https://img.alicdn.com/bao/uploaded/i3/353050747/TB2AlrEdgaTBuNjSszfXXXgfpXa_!!353050747.jpg?1521531836#h', 180, '未被购买', 2, 1, NULL, '2025-03-09 23:38:00',
  '2025-03-09 23:38:00');
 
 -- 服装 -> 裤子
     INSERT INTO goods (title, content, cover_img, price, state, category_id, create_user, buyer_user, create_time,
                        update_time)
-VALUES('短裤', '透气舒适的夏季短裤', 'shorts.jpg', 120, '未被购买', 2, 1, NULL, '2025-03-09 23:39:00', '2025-03-09 23:39:00'),
-('西装裤', '正式场合穿着的西装裤', 'suit_pants.jpg', 350, '未被购买', 2, 1, NULL, '2025-03-09 23:40:00',
+VALUES('短裤', '透气舒适的夏季短裤', 'https://s.coze.cn/t/tgLoUe_07AU/', 120, '未被购买', 2, 1, NULL, '2025-03-09 23:39:00', '2025-03-09 23:39:00'),
+('西装裤', '正式场合穿着的西装裤', 'https://s.coze.cn/t/4gUcQOKTFKg/', 350, '未被购买', 2, 1, NULL, '2025-03-09 23:40:00',
  '2025-03-09 23:40:00'),
-('工装裤', '耐用的工装裤', 'cargo_pants.jpg', 220, '未被购买', 2, 1, NULL, '2025-03-09 23:41:00',
+('工装裤', '耐用的工装裤', 'https://s.coze.cn/t/C5jGwCvAkkU/', 220, '未被购买', 2, 1, NULL, '2025-03-09 23:41:00',
  '2025-03-09 23:41:00'),
-('皮裤', '时尚的皮裤，适合冬季穿着', 'leather_pants.jpg', 450, '未被购买', 2, 1, NULL, '2025-03-09 23:42:00',
+('皮裤', '时尚的皮裤，适合冬季穿着', 'https://s.coze.cn/t/q8vGm07zrbw/', 450, '未被购买', 2, 1, NULL, '2025-03-09 23:42:00',
  '2025-03-09 23:42:00'),
-('瑜伽裤', '适合瑜伽和运动的舒适裤子', 'yoga_pants.jpg', 160, '未被购买', 2, 1, NULL, '2025-03-09 23:43:00',
+('瑜伽裤', '适合瑜伽和运动的舒适裤子', 'https://s.coze.cn/t/knl0D6lVyE0/', 160, '未被购买', 2, 1, NULL, '2025-03-09 23:43:00',
  '2025-03-09 23:43:00');
 
 -- 服装 -> 鞋子
     INSERT INTO goods (title, content, cover_img, price, state, category_id, create_user, buyer_user, create_time,
                        update_time)
-VALUES('运动鞋', '舒适的运动鞋，适合跑步', 'sports_shoes.jpg', 300, '未被购买', 3, 1, NULL, '2025-03-09 23:44:00',
+VALUES('运动鞋', '舒适的运动鞋，适合跑步', 'https://s.coze.cn/t/_Ivh-oa-ezU/', 300, '未被购买', 3, 1, NULL, '2025-03-09 23:44:00',
  '2025-03-09 23:44:00'),
-('皮鞋', '优雅的皮鞋，适合正式场合', 'leather_shoes.jpg', 400, '未被购买', 3, 1, NULL, '2025-03-09 23:45:00',
+('皮鞋', '优雅的皮鞋，适合正式场合', 'https://s.coze.cn/t/CbEraUWeQLg/', 400, '未被购买', 3, 1, NULL, '2025-03-09 23:45:00',
  '2025-03-09 23:45:00'),
-('高跟鞋', '适合搭配裙子的高跟鞋', 'high_heels.jpg', 500, '未被购买', 3, 1, NULL, '2025-03-09 23:46:00',
+('高跟鞋', '适合搭配裙子的高跟鞋', 'https://s.coze.cn/t/4aIF-SWx_rY/', 500, '未被购买', 3, 1, NULL, '2025-03-09 23:46:00',
  '2025-03-09 23:46:00'),
-('靴子', '适合秋冬季节穿着的靴子', 'boots.jpg', 350, '未被购买', 3, 1, NULL, '2025-03-09 23:47:00',
+('靴子', '适合秋冬季节穿着的靴子', 'https://s.coze.cn/t/1emLTrMT_-o/', 350, '未被购买', 3, 1, NULL, '2025-03-09 23:47:00',
  '2025-03-09 23:47:00'),
-('凉鞋', '夏季凉爽的凉鞋', 'sandals.jpg', 120, '未被购买', 3, 1, NULL, '2025-03-09 23:48:00', '2025-03-09 23:48:00');
+('凉鞋', '夏季凉爽的凉鞋', 'https://s.coze.cn/t/1emLTrMT_-o/', 120, '未被购买', 3, 1, NULL, '2025-03-09 23:48:00', '2025-03-09 23:48:00');
 
 -- 数码 -> 手机
     INSERT INTO goods (title, content, cover_img, price, state, category_id, create_user, buyer_user, create_time,
                        update_time)
-VALUES('iPhone 14', '最新款的iPhone 14，支持5G', 'iphone14.jpg', 8000, '未被购买', 4, 1, NULL, '2025-03-09 23:49:00',
+VALUES('iPhone 14', '最新款的iPhone 14，支持5G', 'https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/09/iPhone-14-next-to-MacBook.jpg', 8000, '未被购买', 4, 1, NULL, '2025-03-09 23:49:00',
  '2025-03-09 23:49:00'),
-('Samsung Galaxy S22', '三星最新款手机，性能强劲', 'galaxy_s22.jpg', 7000, '未被购买', 4, 1, NULL, '2025-03-09 23:50:00',
+('Samsung Galaxy S22', '三星最新款手机，性能强劲', 'https://www.etradesupply.com/blog/wp-content/uploads/2022/10/The-Samsung-Galaxy-S23-and-iPhone-14.png', 7000, '未被购买', 4, 1, NULL, '2025-03-09 23:50:00',
  '2025-03-09 23:50:00'),
-('OnePlus 9', 'OnePlus 9，超快充电速度', 'oneplus_9.jpg', 4500, '未被购买', 4, 1, NULL, '2025-03-09 23:51:00',
+('OnePlus 9', 'OnePlus 9，超快充电速度', 'https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/80346/6/6503/170087/5d49255dE551443af/0d0601b02dbb38e9.jpg!q80.dpg', 4500, '未被购买', 4, 1, NULL, '2025-03-09 23:51:00',
  '2025-03-09 23:51:00'),
-('Xiaomi Mi 11', '小米最新款手机，性能稳定', 'mi_11.jpg', 3500, '未被购买', 4, 1, NULL, '2025-03-09 23:52:00',
+('Xiaomi Mi 11', '小米最新款手机，性能稳定', 'https://p7.itc.cn/images01/20220710/9a195248c104494c8c48e67274a00e10.png', 3500, '未被购买', 4, 1, NULL, '2025-03-09 23:52:00',
  '2025-03-09 23:52:00'),
-('Oppo Find X3', 'Oppo Find X3，极致拍照体验', 'oppo_find_x3.jpg', 6000, '未被购买', 4, 1, NULL, '2025-03-09 23:53:00',
+('Oppo Find X3', 'Oppo Find X3，极致拍照体验', 'https://image.oppo.com/content/dam/oppo/product-asset-library/specs/reno6-5g/color-1920.png', 6000, '未被购买', 4, 1, NULL, '2025-03-09 23:53:00',
  '2025-03-09 23:53:00');
+
+
+
+
 
 -- 数码 -> 相机
     INSERT INTO goods (title, content, cover_img, price, state, category_id, create_user, buyer_user, create_time,
