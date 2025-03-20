@@ -21,6 +21,13 @@ create table user
     update_time datetime    not null comment '修改时间'
 ) comment '用户表';
 
+-- 创建两个用户
+INSERT INTO user (username, password, nickname, email, user_pic, create_time, update_time)
+VALUES
+    ('test-1', MD5('test-1'), 'test_1', '3089308393@qq.com', 'https://s21.ax1x.com/2025/03/02/pEGVjw4.jpg', NOW(), NOW()),
+    ('test-2', MD5('test-2'), 'test_2', '3089308393@qq.com', 'https://s21.ax1x.com/2025/03/20/pEwqt4P.jpg', NOW(), NOW());
+
+
 -- 分类表
 create table category
 (
