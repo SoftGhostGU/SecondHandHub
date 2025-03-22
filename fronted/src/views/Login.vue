@@ -111,7 +111,7 @@ const clearRegisterData = ()=>{
   .login-view {
     width: 100%;
     height: 100%;
-    margin: -8px;
+    margin: 0px;
     background: url('@/assets/images/background.png') center no-repeat fixed;
     background-size: cover;
     position: absolute;
