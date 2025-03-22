@@ -21,6 +21,16 @@
 ```bash
 # 克隆项目
 git clone git@github.com:SoftGhostGU/SecondHandHub.git
+
+# 数据初始化（为了方便展示）：运行： 
+SecondHandHub/backend/second_hand/database_script/SecondHand.sql
+
+# 启动Redis：运行”SecondHandHub/backend/second_hand/redis-server.exe
+# 从项目根目录下的cmd窗口中运行：
+cd backend/second_hand/target
+java –jar second_hand-1.0-SNAPSHOT.jar
+
+# 回到根目录启动前端
 cd fronted
 
 # 安装依赖
