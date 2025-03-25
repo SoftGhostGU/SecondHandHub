@@ -136,7 +136,7 @@ npm run dev
 
 ## 接收邮件页面
 
-![接收邮件页面](./profile_photo/9.receiveEmail.png)
+![接收邮件页面](./profile_photo/9.receiveEMail.png)
 
 ## 📌 未来计划
 - ✅ **优化 UI 设计**
